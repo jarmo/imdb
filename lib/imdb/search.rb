@@ -27,7 +27,8 @@ module Imdb
     end
 
     def self.query(query)
-      open("http://akas.imdb.com/find?q=#{CGI.escape(query)};s=tt")
+      imdb_ip_to_keep_movie_names_in_original_language = "72.21.206.80"
+      open("http://akas.imdb.com/find?q=#{CGI.escape(query)};s=tt", "X-Forwarded-For" => imdb_ip_to_keep_movie_names_in_original_language)
     end
 
     def parse_movie
